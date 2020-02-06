@@ -1,0 +1,24 @@
+﻿<Window x:Class="Reproductor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Reproductor"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="247.759" Width="465.333">
+    <Grid>
+        <TextBox x:Name="txtDirectorio" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" IsEnabled="False"/>
+        <Button x:Name="btnExaminar" Content="Examinar" HorizontalAlignment="Left" Margin="253,10,0,0" VerticalAlignment="Top" Width="76" Height="23" Click="BtnExaminar_Click"/>
+        <Button x:Name="btnReproducir" Content="Reproducir" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="76" Height="23" Click="btnReproducir_Click"/>
+        <Button x:Name="btnPausa" Content="Pausa" HorizontalAlignment="Left" Margin="91,38,0,0" VerticalAlignment="Top" Width="76" Height="23" IsEnabled="False" Click="btnPausa_Click"/>
+        <Button x:Name="btnDetener" Content="Detener" HorizontalAlignment="Left" Margin="172,38,0,0" VerticalAlignment="Top" Width="76" Height="23" IsEnabled="False" Click="btnDetener_Click"/>
+        <TextBlock x:Name="lblTiempoActual" HorizontalAlignment="Left" Margin="10,93,0,0" TextWrapping="Wrap" Text="00:00:00" VerticalAlignment="Top"/>
+        <TextBlock x:Name="lblTiempoTotal" HorizontalAlignment="Left" Margin="280,93,0,0" TextWrapping="Wrap" Text="00:00:00" VerticalAlignment="Top"/>
+        <Slider x:Name="sldReproduccion" Thumb.DragStarted="SldTiempo_DragStarted" Thumb.DragCompleted="SldTiempo_DragCompleted" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top" Width="319"/>
+        <ComboBox x:Name="cbDispositivoSalida" HorizontalAlignment="Left" Margin="10,175,0,0" VerticalAlignment="Top" Width="314"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,154,0,0" TextWrapping="Wrap" Text="Elige dispositivo de salida" VerticalAlignment="Top"/>
+        <Slider x:Name="sldVolumen" HorizontalAlignment="Left" Margin="381,114,0,0" VerticalAlignment="Top" Orientation="Vertical" Height="83" Maximum="1" SmallChange="0.01" LargeChange="0.1" Value="1" ValueChanged="SldVolumen_ValueChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="366,93,0,0" TextWrapping="Wrap" Text="Volumen" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
