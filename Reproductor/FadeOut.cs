@@ -10,18 +10,18 @@ namespace Reproductor
     class FadeOut : ISampleProvider
     {
         private ISampleProvider fuente;
+
         private int muestrasLeidas = 0;
         private float segundosTranscurridos = 0;
+
         private float duracion;
         private float inicio;
-
-        public FadeOut(ISampleProvider fuente, float duracion)
+        public FadeOut(ISampleProvider fuente, float inicio, float duracion)
         {
             this.fuente = fuente;
+            this.inicio = inicio;
             this.duracion = duracion;
         }
-
-
         public WaveFormat WaveFormat
         {
             get
@@ -37,13 +37,17 @@ namespace Reproductor
             muestrasLeidas += read;
             segundosTranscurridos = (float)(muestrasLeidas) / (float)(fuente.WaveFormat.SampleRate) / (float)(fuente.WaveFormat.Channels);
 
-            float factorEscala = segundosTranscurridos / duracion;
-
-            if (segundosTranscurridos <= duracion)
+            if (segundosTranscurridos >= inicio)
             {
+                float factorEscala = (((inicio + duracion) - segundosTranscurridos)) / duracion;
+                if (((inicio + duracion) - segundosTranscurridos) <= 0.0f)
+                {
+                    factorEscala = 0.0f;
+                }
+                
                 for (int i = 0; i < read; i++)
                 {
-                    buffer[i + offset] *= factorEscala;
+                        buffer[i + offset] *= factorEscala;
                 }
             }
 

@@ -35,11 +35,12 @@ namespace Reproductor
             muestrasLeidas += read;
             segundosTranscurridos = (float)(muestrasLeidas) / (float)(fuente.WaveFormat.SampleRate) / (float)(fuente.WaveFormat.Channels);
 
-            float factorEscala = segundosTranscurridos / duracion;
+            
 
             if (segundosTranscurridos <= duracion)
             {
-                for(int i =0; i<read;i++)
+                float factorEscala = segundosTranscurridos / duracion;
+                for (int i =0; i<read;i++)
                 {
                     buffer[i + offset] *= factorEscala;
                 }

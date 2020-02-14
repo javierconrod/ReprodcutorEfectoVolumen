@@ -53,11 +53,12 @@ namespace Reproductor
         {
             int read =  fuente.Read(buffer, offset, count);
             //Aplicar el efecto
-            for(int i = 0; i<read; i++)
+            //procesamiento
+            for(int i = 0; i < read; i++)
             {
                 buffer[i + offset] *= volumen;
             }
-
+            //la variable buffer modificada es la salida
             return read;
         }
     }
